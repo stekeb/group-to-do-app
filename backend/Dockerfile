@@ -1,7 +1,7 @@
 # backend/Dockerfile
 
 # Verwende ein offizielles Node.js Image als Basis
-FROM node:18-alpine
+FROM node:22-alpine
 
 # Setze das Arbeitsverzeichnis im Container
 WORKDIR /app/backend
