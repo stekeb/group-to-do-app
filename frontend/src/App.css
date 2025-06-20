@@ -98,21 +98,35 @@ ul{
   }
 
   body.dark-mode {
-    background: #050505;
-    color: #eee;
+    background: #bed5e1;
+    color: #dfe6ef;
   }
 
   .container.dark {
-    background: #1a1919;
+    background: #103234;
+  }
+
+  .app-title.dark {
+    color:#e1e1e6
   }
 
   .task-list *{
     margin-right: 5px;
   }
 
-  .eingabe *{
+  .container-eingabe *{
     margin-right: 10px;
+    margin-bottom: 10px;
     border-radius: 5px;
     height: 40px;
+    padding-bottom: 10px;
+    display: grid;
+    column-gap: 50px;
   }
 
+  
+
+  
+
+
+   
