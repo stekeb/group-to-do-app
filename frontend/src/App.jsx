@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 
+
+
 function App() {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -351,14 +353,16 @@ function App() {
     });
   };
 
+  
 
   return (
     // Das JSX bleibt unverändert, da die Logikänderungen das Problem beheben sollten.
-    <div className={`todo-app container ${darkMode ? 'dark' : ''}`}>
+    <div className={`todo-app container ${darkMode ? 'dark' : ''}`}
+    transition-style="in:circle:hesitate">
       <div className="app-header">
         <h1 className={`app-title ${darkMode ? 'dark' : ''}`}>To-Do List</h1>
         <button onClick={() => setDarkMode(!darkMode)} className="mode-toggle">
-          {darkMode ? '☀️' : '🌙'}
+          {darkMode ? '🌙' : '☀️'}
         </button>
       </div>
 
@@ -411,12 +415,11 @@ function App() {
             <div><input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Neue Aufgabe..." />        </div>
             <div><input type="datetime-local" value={deadline} onChange={(e) => setDeadline(e.target.value)} placeholder="Deadline festlegen" /></div>
             <div><textarea value={note} onChange={(e) => setNote(e.target.value)} placeholder="Notiz hinzufügen..." /></div>
-            <div><button className="Addi" able={!title.trim()} onClick={itemHinzufuegen}>Add</button></div>
+            <div><button className="Addi" disable={!title.trim()} onClick={itemHinzufuegen}>Add</button></div>
           </div>
-          
           <ul className="task-list">
             {/* Nicht erledigte Aufgaben */}
-            <h2>Offene Aufgaben</h2>
+            <h2></h2>
             {tasks.filter(task => !task.completed).map(({ id, title, completed, deadline, note }) => (
                 <li key={id}>
                     {/* Checkbox */}
@@ -450,7 +453,7 @@ function App() {
             ))}
 
             {/* Erledigte Aufgaben */}
-            <h2>Erledigt</h2>
+            <h2></h2>
             {tasks.filter(task => task.completed).map(({ id, title, completed, deadline, note }) => (
                 <li key={id}>
                     {/* Checkbox */}
