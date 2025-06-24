@@ -1,14 +1,17 @@
 # This is a Docker Compose file for a group to-do application
 # It sets up a frontend using Nginx, a backend service, and a PostgreSQL database.
 services:
- frontend: 
-    image: nginx:alpine
+  frontend: 
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    image: frontend:latest
     ports:
-      - "80:80"
+      - "8080:80"
     networks:
       - group-to-do-app
 
- backend:
+  backend:
     build:
       context: backend
       dockerfile: Dockerfile
@@ -19,7 +22,8 @@ services:
       - group-to-do-app
     depends_on:
       - db
- db:
+
+  db:
     image: postgres:alpine
     environment:
       POSTGRES_USER: user
