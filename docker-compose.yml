@@ -1,0 +1,40 @@
+# This is a Docker Compose file for a group to-do application
+# It sets up a frontend using Nginx, a backend service, and a PostgreSQL database.
+services:
+ frontend: 
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    networks:
+      - group-to-do-app
+
+ backend:
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    image: backend:latest
+    ports:
+      - "3050:3050"
+    networks:
+      - group-to-do-app
+    depends_on:
+      - db
+ db:
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: todo_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - group-to-do-app
+
+networks:
+  group-to-do-app:
+    driver: bridge
+
+volumes:
+  db-data:
