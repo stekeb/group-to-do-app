@@ -1,5 +1,5 @@
 # This is a Docker Compose file for a group to-do application
-# It sets up a frontend using Nginx, a backend service, and a PostgreSQL database.
+# It sets up a frontend using Nginx, a backend service, and a MySQL database.
 services:
   frontend: 
     build:
@@ -24,17 +24,24 @@ services:
       - db
 
   db:
-    image: postgres:alpine
+    image: mysql:8.0
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: todo_db
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: todo_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
     ports:
-      - "5432:5432"
+      - "3306:3306"
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - db-data:/var/lib/mysql
     networks:
       - group-to-do-app
+    command: --default-authentication-plugin=mysql_native_password --skip-name-resolve
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 5
 
 networks:
   group-to-do-app:

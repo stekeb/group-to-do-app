@@ -20,10 +20,8 @@ RUN npm install --production # --production, um nur Produktions-Abhängigkeiten 
 # Kopiere den Rest des Backend-Quellcodes
 COPY . .
 
-# Kopiere die Datenbankdatei, wenn sie im Repository ist (oder erstelle sie beim Start)
-# Wenn tasks.db versioniert ist:
-COPY tasks.db ./tasks.db
-# Wenn nicht, wird sie beim ersten Start erstellt, wie im server.js definiert.
+# Die Datenbank wird nun vom MySQL-Container über Docker Compose verwaltet,
+# wir brauchen also keinen MySQL-Client hier zu installieren.
 
 # Exponiere den Port, auf dem dein Backend-Server läuft (z.B. 3050)
 EXPOSE 3050
