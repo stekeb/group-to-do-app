@@ -12,7 +12,7 @@
   --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Typography and Layout Global */
+/* Typography and Layout Global: */
 body {
   font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--text);
@@ -24,7 +24,7 @@ body {
 }
 
 h1 {
-  font-size: 15rem;
+  font-size: 30rem;
   font-weight: 600;
   color: var(--primary);
   line-height: 1.1;
@@ -33,6 +33,40 @@ h1 {
 h2 {
   font-size: 1.25rem;
   font-weight: 500;
+}
+
+
+/* Header */
+.app-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.app-title {
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--primary);
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.5px;
+}
+
+body.dark-mode {
+    background: #bed5e1;
+    color: #dfe6ef;
+  }
+
+/* Divider */
+.divider {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--secondary),
+    transparent
+  );
+  margin: 1.5rem auto;
+  width: 80%;
+  opacity: 0.7;
 }
 
 /* Category Buttons Container */
@@ -108,19 +142,7 @@ input {
   stroke-width: 2.5;
 }
 
-/* Divider */
-.divider {
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--secondary),
-    transparent
-  );
-  margin: 1.5rem auto;
-  width: 80%;
-  opacity: 0.7;
-}
+
 
 /* Todo App Container */
 .todo-app {
@@ -149,19 +171,6 @@ input {
   transform: scale(1.02);
 }
 
-/* Header */
-.app-header {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.app-title {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--primary);
-  margin: 0 0 0.5rem 0;
-  letter-spacing: -0.5px;
-}
 
 /* Input Group */
 .input-group {
