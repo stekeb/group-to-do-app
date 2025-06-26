@@ -14,7 +14,11 @@
 
 /* Typography and Layout Global: */
 body {
-  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    "Segoe UI",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   color: var(--text);
   background-color: var(--background);
   line-height: 1.6;
@@ -35,7 +39,6 @@ h2 {
   font-weight: 500;
 }
 
-
 /* Header */
 .app-header {
   text-align: center;
@@ -51,9 +54,9 @@ h2 {
 }
 
 body.dark-mode {
-    background: #bed5e1;
-    color: #dfe6ef;
-  }
+  background: #bed5e1;
+  color: #dfe6ef;
+}
 
 /* Divider */
 .divider {
@@ -77,6 +80,18 @@ body.dark-mode {
   background-color: var(--card-bg);
   border-radius: 5px;
   box-shadow: 0 4px 12px rgba(185, 26, 26, 0.08);
+}
+
+.container-eingabe * {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  height: 40px;
+  padding-bottom: 10px;
+  display: grid;
+  column-gap: 50px;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
 }
 
 /* Category Input Field */
@@ -119,8 +134,10 @@ input {
   align-items: center;
   gap: 0.5rem;
   margin: 10px 10px 20px 0;
-  font: 1.2rem "Fira Sans", sans-serif;
-  font-family: 'Poppins', sans-serif;
+  font:
+    1.2rem "Fira Sans",
+    sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1rem;
 }
 
@@ -142,8 +159,6 @@ input {
   stroke-width: 2.5;
 }
 
-
-
 /* Todo App Container */
 .todo-app {
   max-width: 500px;
@@ -156,21 +171,20 @@ input {
   position: relative;
   list-style: none;
   transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  background-image: 
+  background-image:
     linear-gradient(
-      -225deg, 
-      #FFFFFF 0%, 
-      rgba(255, 255, 255, 0) 40%, 
-      rgba(0, 255, 255, 0) 60%, 
+      -225deg,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(0, 255, 255, 0) 60%,
       #0ff 100%
-    ), 
-    linear-gradient(45deg, #3023AE 0%, #e4adce 100%);
+    ),
+    linear-gradient(45deg, #3023ae 0%, #e4adce 100%);
 }
 
 .todo-app:hover {
   transform: scale(1.02);
 }
-
 
 /* Input Group */
 .input-group {
@@ -190,15 +204,19 @@ input {
   background-color: rgb(229, 237, 238);
   border: none;
   border-radius: 25px;
-  box-shadow: -6px -6px 10px #f9f9f9,
+  box-shadow:
+    -6px -6px 10px #f9f9f9,
     6px 6px 10px #00000026;
-  font: 1.2rem "Fira Sans", sans-serif;
-  font-family: 'Poppins', sans-serif;
+  font:
+    1.2rem "Fira Sans",
+    sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1rem;
 }
 
 .new-item:hover {
-  box-shadow: 2px 2px 2px #f9f9f9,
+  box-shadow:
+    2px 2px 2px #f9f9f9,
     -2px -2px 2px #00000026;
 }
 
@@ -207,16 +225,18 @@ input {
   0% {
     clip-path: circle(0%);
   }
+
   40% {
     clip-path: circle(40%);
   }
+
   100% {
     clip-path: circle(125%);
   }
 }
 
 [transition-style="in:circle:hesitate"] {
-  animation: 5s cubic-bezier(.25, 1, .30, 1) circle-in-hesitate both;
+  animation: 5s cubic-bezier(0.25, 1, 0.3, 1) circle-in-hesitate both;
 }
 
 /* Responsive */

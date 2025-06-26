@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import App from "../src/App";
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
 import React from "react";
 
 describe("Prüft die Anwesentheit des Eingabefelds", () => {
