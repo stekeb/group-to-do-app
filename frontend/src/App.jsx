@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 
+
+
 function App() {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -351,18 +353,23 @@ function App() {
     });
   };
 
+  
 
   return (
     // Das JSX bleibt unverändert, da die Logikänderungen das Problem beheben sollten.
-    <div className={`container ${darkMode ? 'dark' : ''}`}>
-      <div className="header">
-        <h1>To-Do List</h1>
+    <div className={`todo-app container ${darkMode ? 'dark' : ''}`}
+    transition-style="in:circle:hesitate">
+      <div className="app-header">
+        <h1 className={`app-title ${darkMode ? 'dark' : ''}`}>To-Do List</h1>
         <button onClick={() => setDarkMode(!darkMode)} className="mode-toggle">
-          {darkMode ? '☀️' : '🌙'}
+          {darkMode ? '🌙' : '☀️'}
         </button>
       </div>
 
       <div className="category-selection">
+        
+<div className="divider"></div>
+
         {!selectedCategory ? (
             <>
                 <h2>Kategorie auswählen</h2>
@@ -371,7 +378,7 @@ function App() {
                     {categories.map(({ id, name, counts }) => (
                         <div key={id} className="category-item">
                             {/* Kategorie anzeigen mit Zählern */}
-                            <button onClick={() => setSelectedCategory(id)}>
+                            <button className="new-item" onClick={() => setSelectedCategory(id)}>
                                 {/* Zeige Counts an, falls vorhanden. Nullish Coalescing stellt sicher, dass '0' angezeigt wird, wenn count 0 ist. */}
                                 {name} {counts ? `(${(counts.open_tasks ?? 0)}/${(counts.completed_tasks ?? 0)})` : ""}
                             </button>
@@ -379,31 +386,40 @@ function App() {
                             <button onClick={() => categoryLoeschen(id)} className="delete-button">🗑️</button>
                         </div>
                     ))}
+    
                 </div>
                 <input
+                    className="category-input"
                     value={newCategoryName}
                     onChange={(e) => setNewCategoryName(e.target.value)}
                     placeholder="Neue Kategorie..."
                 />
-                <button onClick={categoryHinzufuegen}>Kategorie hinzufügen</button>
+
+                
+                <button onClick={categoryHinzufuegen} className="add-button">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 5v14M5 12h14" />
+                </svg>Kategorie hinzufügen</button>
             </>
         ) : (
-            <button onClick={() => setSelectedCategory(null)}>Zurück zur Kategorie-Auswahl</button>
+            <button onClick={() => setSelectedCategory(null)} className="add-button">Zurück zur Kategorie-Auswahl</button>
         )}
       </div>
+      
+      
 
       {selectedCategory && (
         <>
-          <div class="eingabe">
-            <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Neue Aufgabe..." />
-            <input type="datetime-local" value={deadline} onChange={(e) => setDeadline(e.target.value)} placeholder="Deadline festlegen" />
-            <textarea value={note} onChange={(e) => setNote(e.target.value)} placeholder="Notiz hinzufügen..." />
-            <button disabled={!title.trim()} onClick={itemHinzufuegen}>Add</button>
+         
+          <div class="container-eingabe">
+            <div><input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Neue Aufgabe..." />        </div>
+            <div><input type="datetime-local" value={deadline} onChange={(e) => setDeadline(e.target.value)} placeholder="Deadline festlegen" /></div>
+            <div><textarea value={note} onChange={(e) => setNote(e.target.value)} placeholder="Notiz hinzufügen..." /></div>
+            <div><button className="Addi" disable={!title.trim()} onClick={itemHinzufuegen}>Add</button></div>
           </div>
-          
           <ul className="task-list">
             {/* Nicht erledigte Aufgaben */}
-            <h2>Offene Aufgaben</h2>
+            <h2></h2>
             {tasks.filter(task => !task.completed).map(({ id, title, completed, deadline, note }) => (
                 <li key={id}>
                     {/* Checkbox */}
@@ -437,7 +453,7 @@ function App() {
             ))}
 
             {/* Erledigte Aufgaben */}
-            <h2>Erledigt</h2>
+            <h2></h2>
             {tasks.filter(task => task.completed).map(({ id, title, completed, deadline, note }) => (
                 <li key={id}>
                     {/* Checkbox */}
